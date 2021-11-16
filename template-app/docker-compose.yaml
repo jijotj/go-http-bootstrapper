@@ -1,0 +1,28 @@
+version: '3.0'
+
+services:
+  test:
+    image: test
+    build:
+      context: .
+      dockerfile: build/Dockerfile.test
+    environment:
+      - COVERAGE_THRESHOLD=$COVERAGE_THRESHOLD
+    volumes:
+      - .:/{{.ServiceName}}
+    container_name: test
+    depends_on:
+      - app
+
+  app:
+    image: app
+    build:
+      context: .
+      dockerfile: build/Dockerfile
+      args:
+        APP_PORT: 80
+    container_name: app
+    ports:
+      - "80:80"
+    env_file:
+      - "test/application.local.env"

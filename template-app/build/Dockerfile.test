@@ -1,0 +1,8 @@
+FROM golang:1.17.2
+
+WORKDIR /{{.ServiceName}}/
+ENV COVERAGE_THRESHOLD=100
+
+# Run tests
+CMD set -ex; \
+	./build/go-test.sh ${COVERAGE_THRESHOLD}

@@ -1,0 +1,27 @@
+linters-settings:
+  errcheck:
+    check-blank: true
+  dupl:
+    threshold: 150
+  nakedret:
+    max-func-lines: 5
+  goimports:
+    local-prefixes: sp
+  gocyclo:
+    min-complexity: 10
+
+linters:
+  enable:
+    - dupl
+    - gocyclo
+    - goimports
+    - golint
+    - gosec
+    - govet
+    - interfacer
+    - megacheck
+    - misspell
+    - prealloc
+    - scopelint
+    - stylecheck
+    - unconvert
